@@ -4,11 +4,263 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Skills</title>
-    <link rel="stylesheet" href="CSS/skillsCss.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: inter, Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            color: #fff;
+            margin-bottom: 30px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            background-color: #fff;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            color: #000;
+            font-size: 36px;
+            font-weight: bold;
+            padding-left: 20px;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: #000;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 30px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            padding-right: 20px;
+        }
+
+        .nav-links a {
+            color: #000;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: background-color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background-color: #000;
+            color: #fff;
+            border-radius: 20px;
+        }
+
+        .main-content {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 80px;
+            padding: 0 20px;
+            text-align: left;
+        }
+
+        .section {
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .section p {
+            font-size: 18px;
+            line-height: 2.0;
+        }
+
+        .table-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .table-container.column {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: none;
+            padding: 16px;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        th {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        td {
+            display: flex;
+            align-items: center;
+        }
+
+        td img {
+            margin-right: 16px;
+            border-radius: 4px;
+        }
+
+        tr {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .table_header {
+            margin-bottom: 20px;
+            display: flex;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            justify-content: center;
+            background-color: #f4f4f4;
+        }
+
+        @media (max-width: 1024px) and (orientation: portrait), (max-width: 768px) {
+            .table-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+
+            .logo {
+                font-size: 24px;
+                padding-left: 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 250px;
+                height: 100%;
+                flex-direction: column;
+                gap: 20px;
+                background-color: #fff;
+                padding: 20px;
+                transition: right 0.3s ease-in-out;
+                box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links.show {
+                right: 0;
+            }
+
+            .hamburger {
+                display: block;
+                right: 20px;
+            }
+
+            .main-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: left;
+                margin-top: 80px;
+            }
+
+            .table-container {
+                margin-top: px;
+            }
+
+            .nav-links a {
+                font-size: 16px;
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .body {
+                padding: 0 10px;
+            }
+
+            .logo {
+                font-size: 24px;
+                padding-left: 15px;
+            }
+
+            .hamburger {
+                right: 20px;
+            }
+
+            .nav-links a {
+                font-size: 14px;
+            }
+
+            .table-container {
+                margin-top: 40px;
+            }
+
+            .table-container td img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+    </style>
 </head>
 <body>
     <nav class="navbar" aria-label="Main navigation">
         <div class="logo">Alazar</div>
+        <button class="hamburger" aria-label="Menu">&#9776;</button>
         <div class="nav-links">
             <a href="index.html" aria-label="Home">Home</a>
             <a href="about.html" aria-label="About">About</a>
@@ -19,10 +271,11 @@
     </nav>
     <main class="main-content">
         <section class="section">
-            <h2>My Skills</h2>
-            <p>Throughout my academic and self teaching journey, I have developed a diverse skill set that spans various areas. Here are some of the key skills I have acquired:</p>
+
+    
             <div class="table-container">
-                <table>
+                <!-- First Table (Technical Skills) -->
+                <table class="skills-table">
                     <thead>
                         <tr class="table_header">
                             <th colspan="2">Technical Skills</th>
@@ -31,25 +284,25 @@
                     <tbody>
                         <tr> 
                             <td><img src="images/programming.svg" alt="Programming Languages" style="width: 50px; height: 50px;"></td>
-                            <td>Programming Languages:<br>JavaScript, Python and Java</td> </tr>
+                            <td>Programming Languages:<br>JavaScript, Python and Java</td>
+                        </tr>
                         <tr>
                             <td><img src="images/web-development.svg" alt="Web Development" style="width: 50px; height: 50px;"></td>
                             <td>Web Development:<br>HTML, CSS and React</td>
                         </tr>
                         <tr>
                             <td><img src="images/data-analysis.svg" alt="Data Analysis" style="width: 50px; height: 50px;"></td>
-                            <td>Data Analysis:<br>Excel and  SQL</td>
+                            <td>Data Analysis:<br>Excel and SQL</td>
                         </tr>
                         <tr>
                             <td><img src="images/networking.svg" alt="Networking" style="width: 50px; height: 50px;"></td>
                             <td>Networking:<br>Network protocols, routing, switching</td>
                         </tr>
-                        
                     </tbody>
                 </table>
-            
-            
-                <table>
+    
+                <!-- Second Table (Soft Skills) -->
+                <table class="skills-table">
                     <thead>
                         <tr class="table_header">
                             <th colspan="2">Soft Skills</th>
@@ -58,7 +311,7 @@
                     <tbody>
                         <tr>
                             <td><img src="images/communication.svg" alt="Communication" style="width: 50px; height: 50px;"></td>
-                            <td>Communication:<br>speaking, writing and collaboration</td>
+                            <td>Communication:<br>Speaking, writing and collaboration</td>
                         </tr>
                         <tr>
                             <td><img src="images/problem-solving.svg" alt="Problem Solving" style="width: 50px; height: 50px;"></td>
@@ -75,33 +328,31 @@
                     </tbody>
                 </table>
             </div>
-            
-            
-            
         </section>
     </main>
-    <footer class="footer">
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/alazar-andualem" aria-label="LinkedIn"><img src="images/linkedin.svg" alt="LinkedIn"></a>
-            <a href="https://github.com/aIazar" aria-label="GitHub"><img src="images/github.svg" alt="GitHub"></a>
-            <a href="x.com/aIazars" aria-label="Twitter"><img src="images/twitter.svg" alt="Twitter"></a>
-            <a href="t.me/aIazars" aria-label="Telegram"><img src="images/telegram.svg" alt="Telegram"></a>
-        </div>
-        
-        <div class="quick-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="skills.html">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact Me</a>
-        </div>
-        <div class="contact-info">
-            <a href="mailto:alazar.andualem-ug@aau.edu.et">alazar.andualem-ug@aau.edu.et</a>
-            <p>Phone: +251 989013234</p>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2024 Alazar. All rights reserved.</p>
-        </div>
-    </footer>
+
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+
+        document.addEventListener('click', function(event) {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
+                navLinks.classList.remove('show');
+            }
+        });
+
+        //shadow for the nav
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 0) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
 </body>
 </html>
