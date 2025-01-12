@@ -311,13 +311,13 @@
                 <form class="contact-form">
                     <label for="name">Name</label>
                     <input type="text" id="name" name="name" required>
-
+                
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
-
+                
                     <label for="message">Message</label>
                     <textarea id="message" name="message" rows="6" required></textarea>
-
+                
                     <button type="submit">Submit</button>
                 </form>
                 <iframe title = "maps" alt = "Map Loading..."
@@ -354,6 +354,13 @@
                 navbar.classList.remove('scrolled');
             }
         });
+
+        // subit confirmation message 
+        document.querySelector('.contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        alert('Your message has been successfully sent!');
+        this.reset();
+    });
     </script>
 </body>
 </html>
